@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class Student {
+class Student with ChangeNotifier{
 
   String rollNumberId;
   String studentName;
@@ -16,6 +16,7 @@ class Student {
   String photo;
   int contactNo;
   int parentNo;
+  bool isSurveillance;
 
   Student({
    @required this.rollNumberId,
@@ -32,6 +33,7 @@ class Student {
    @required this.photo,
    @required this.contactNo,
     this.parentNo,
+    this.isSurveillance =false,
 });
 
 }

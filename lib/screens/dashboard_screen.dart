@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widget/circular_image.dart';
 import '../widget/my_drawer.dart';
+import '../screens/students_list_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   @override
@@ -43,8 +44,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Text("the"),
-                    CircularImage(facultyName: "Dr.PK Chopra",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).pushNamed(StudentsListScreen.routeName);
+                      },
+                      child: CircularImage(
+                        facultyName: "Dr.PK Chopra",
+                        facultyImage: 'assets/faculty_images/demo.jpg',),
+                    ),
                      // ),
                       Text("Mana"),
                     ],
