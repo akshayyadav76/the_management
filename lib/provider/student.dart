@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 class Student with ChangeNotifier{
@@ -36,6 +37,10 @@ class Student with ChangeNotifier{
     this.isSurveillance =false,
 });
 
+  void changeSurveillance(){
+    isSurveillance =!isSurveillance;
+   notifyListeners();
+  }
 }
 
 

@@ -1,83 +1,68 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/student.dart';
 
 class StudentTile extends StatelessWidget {
-  final String studentName;
-  final String section;
-  final String mentor;
-  final String emailId;
-  final String photo;
-  final int contactNo;
-  final int parentNo;
-  final bool isSurveillance;
+//  final String studentName;
+//  final String section;
+//  final String mentor;
+//  final String emailId;
+//  final String photo;
+//  final int contactNo;
+//  final int parentNo;
+//  final bool isSurveillance;
 
-  StudentTile(
-      {this.studentName, this.section, this.mentor, this.emailId, this.photo, this.isSurveillance,
-        this.contactNo, this.parentNo,});
-
+//  StudentTile({
+//    this.studentName,
+//    this.section,
+//    this.mentor,
+//    this.emailId,
+//    this.photo,
+//    this.isSurveillance,
+//    this.contactNo,
+//    this.parentNo,
+//  });
 
   @override
   Widget build(BuildContext context) {
-   final dd= MediaQuery.of(context).size.width;
+    final student =Provider.of<Student>(context,listen: false);
+    print('build');
     return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          CircleAvatar(backgroundImage: AssetImage(photo),),
-          Column(children: <Widget>[
-            Text(studentName),
-           Row(children: <Widget>[
-                Text('Section: $section'),
-                Text('Mentor: $mentor'),
-              ],),
-          ],),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              SizedBox(width: 30,),
-              Container(
-                  height: 40,
-                  width: 10,
-                  child: IconButton(icon: Icon(Icons.favorite_border), onPressed: () {},)),
-              IconButton(icon: Icon(Icons.more_vert), onPressed: () {},)
-            ],
-          ),
+      child: ListTile(
+        title: Text(student.studentName),
+        leading: CircleAvatar(
+          backgroundImage: AssetImage(student.photo),
+        ),
+        trailing: Row(
+         // mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
 
-        ],
+            Consumer<Student>(builder: (cont,studentCons,ch){
+              return GestureDetector(
+                  child: Icon(studentCons.isSurveillance?Icons.star:Icons.star_border),
+                  onTap: () {
+                student.changeSurveillance();},
+              );},
+            ),
+            PopupMenuButton(icon: Icon(Icons.more_vert),
+            itemBuilder: (_)=>[
+              PopupMenuItem()
+            ],),
+
+
+          ],
+        ),
+        subtitle: Row(
+          children: <Widget>[
+            Text('Section: ${student.section}'),
+            Text('Mentor: ${student.mentor}'),
+          ],
+        ),
+        onTap: () {},
       ),
     );
-
-
-//
-//      Card(
-//      child: Row(
-//        mainAxisSize: MainAxisSize.min,
-//        children: <Widget>[
-//          Container(
-//            width: dd*0.8,
-//            child: ListTile(
-//              title: Text(studentName),
-//              leading: CircleAvatar(backgroundImage: AssetImage(photo),),
-//              trailing:
-//
-//
-//                      //mainAxisAlignment: MainAxisAlignment.end,
-//
-//                        IconButton(icon: Icon(Icons.favorite_border), onPressed: () {},),
-//                       //
-//              subtitle: Row(children: <Widget>[
-//                Text('Section: $section'),
-//                Text('Mentor: $mentor'),
-//              ],),
-//              onTap: (){},
-//
-//            ),
-//          ),
-//          Container(
-//              width: dd*0.2,
-//              child: IconButton(icon: Icon(Icons.more_vert), onPressed: () {},))
-//        ],
-//      ),
-//    );
   }
 }

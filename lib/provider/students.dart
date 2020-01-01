@@ -113,13 +113,13 @@ class Students with ChangeNotifier {
         contactNo:	9753488900,
         parentNo:	9425628688,
         isSurveillance:	false,
-      photo: 'assets/photos/Afreen Ansari',
+      photo: 'assets/photos/Afreen Ansari.jpg',
 
 
     ),
     Student(
         rollNumberId:	'130045597721',
-        studentName:	'Akanksha Zade',
+        studentName:	'Akansha Zade',
         fatherName:	'Basantu Zade',
         motherName:'Bina Zade',
         section:	'A',
@@ -132,13 +132,13 @@ class Students with ChangeNotifier {
         contactNo:	6264494892,
         parentNo:	9893852438,
         isSurveillance:	false,
-      photo: 'assets/photos/Akanksha Zade.jpg'
+      photo: 'assets/photos/Akansha Zade.jpg'
 
 
     ),
     Student(
         rollNumberId:	'130056585835',
-        studentName:	'Akash Malviya',
+        studentName:	'Aakash Malviya',
         fatherName:	'Badri Prasad Malviya',
         motherName:	'Imrat Malviya',
         section:	'C',
@@ -151,7 +151,7 @@ class Students with ChangeNotifier {
     contactNo:	7987247748,
     parentNo:	9893215737,
     isSurveillance:	false,
-      photo: 'assets/photos/Akash Malviya.jpg',
+      photo: 'assets/photos/Aakash Malviya.jpg',
 
     ),
     Student(
@@ -187,7 +187,7 @@ class Students with ChangeNotifier {
     contactNo:	9806406241,
     parentNo:	9977915281,
         isSurveillance:	false,
-      photo: 'assets/photos/Akash Suryawanshi.jpg'
+      photo: 'assets/photos/no photo boy.jpg'
 
 
     ),
@@ -276,7 +276,7 @@ class Students with ChangeNotifier {
     contactNo:	7415756527,
     parentNo:	7879362771,
         isSurveillance:	false,
-      photo: 'assets/photos/no photo girl'
+      photo: 'assets/photos/no photo girl.jpg'
 
     ),
   ];

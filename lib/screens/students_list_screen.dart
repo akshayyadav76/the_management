@@ -13,7 +13,7 @@ class StudentsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allList =Provider.of<Students>(context).allStudents;
+    final allList =Provider.of<Students>(context,listen: false).allStudents;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -32,16 +32,19 @@ class StudentsListScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: allList.length,
                     itemBuilder: (context,i){
-                    return StudentTile(
-                      studentName: allList[i].studentName,
-                      section: allList[i].section,
-                      contactNo: allList[i].contactNo,
-                      emailId: allList[i].emailId,
-                       mentor: allList[i].mentor,
-                      parentNo: allList[i].parentNo,
-                      photo: allList[i].photo,
-                      isSurveillance: allList[i].isSurveillance,
+                    return ChangeNotifierProvider.value(
+                      value: allList[i],
+                      child: StudentTile(
+//                        studentName: allList[i].studentName,
+//                        section: allList[i].section,
+//                        contactNo: allList[i].contactNo,
+//                        emailId: allList[i].emailId,
+//                         mentor: allList[i].mentor,
+//                        parentNo: allList[i].parentNo,
+//                        photo: allList[i].photo,
+//                        isSurveillance: allList[i].isSurveillance,
 
+                      ),
                     );
                     }),
 
