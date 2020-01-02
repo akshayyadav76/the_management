@@ -74,6 +74,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   ],
                 ),
               ),
+              Text('------Recent------'),
               Expanded(child: SingleChildScrollView(
                 child: Column(children: <Widget>[
                   Text('ssfsdf',style: TextStyle(fontSize: 50),),

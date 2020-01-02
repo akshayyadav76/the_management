@@ -7,13 +7,30 @@ import '../provider/students.dart';
 import '../widget/student_tile.dart';
 
 
-
-class StudentsListScreen extends StatelessWidget {
+class StudentsListScreen extends StatefulWidget {
   static const routeName ='/StudentsListScreen';
+
+
+  @override
+  _StudentsListScreenState createState() => _StudentsListScreenState();
+}
+
+class _StudentsListScreenState extends State<StudentsListScreen> {
+
+  String sectionMentor ='All';
 
   @override
   Widget build(BuildContext context) {
-    final allList =Provider.of<Students>(context,listen: false).allStudents;
+    final providerData =Provider.of<Students>(context,listen: false);
+    var allList = providerData.allStudents;
+    if(sectionMentor =='All'){
+      allList =providerData.allStudents;
+    }else if(sectionMentor =='A'||sectionMentor=='B'||sectionMentor=='C'){
+      allList = providerData.section(sectionMentor);
+    }else{
+         allList=providerData.mentor(sectionMentor);
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -25,8 +42,107 @@ class StudentsListScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
               Text('batch 19-21'),
-              SizedBox(width: 80,),
-              IconButton(icon: Icon(Icons.filter_list),),
+              SizedBox(width: 70,),
+             PopupMenuButton(
+               icon: Icon(Icons.filter_list,),
+               onCanceled: (){
+                 //Navigator.pop(contex);
+               },
+               onSelected: (selcetd){
+               setState(() {
+                 sectionMentor ='All';
+                 //
+               });
+               },
+               itemBuilder: (context)=>[
+                 PopupMenuItem(
+                   value: 'All',
+                   child: Text('All Students'),
+                 ),
+                 PopupMenuItem(
+                   child: PopupMenuButton(
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                       children: <Widget>[
+                         Text("Section"),
+                         Icon(Icons.arrow_right),
+                       ],
+                     ),
+                     itemBuilder: (context)=>[
+                       PopupMenuItem(
+                         value: 'A',
+                         child: Center(child: Text('A')),),
+                       PopupMenuItem(
+                         value: 'B',
+                         child: Center(child: Text('B')),),
+                       PopupMenuItem(
+                         value: 'C',
+                         child: Center(child: Text('C')),)
+
+                     ],onSelected: (value){
+                       print('selctd $value ');
+                       setState(() {
+                         sectionMentor =value;
+                       });
+
+                   },
+                   ),
+
+                 ),
+                 PopupMenuItem(child: PopupMenuButton(
+                   child:  Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                     children: <Widget>[
+                       Text("Mentor"),
+                       Icon(Icons.arrow_right),
+                     ],
+                   ),
+                   itemBuilder: (context)=>[
+
+                     PopupMenuItem(
+                       value: 'AB',
+                       child: Text('AB'),
+                     ),
+                     PopupMenuItem(
+                       value: 'AK',
+                       child: Text('Ak'),
+                     ),
+                     PopupMenuItem(
+                       value: 'AKM',
+                       child: Text('AkM'),
+                     ),
+                     PopupMenuItem(
+                       value: 'AM',
+                       child: Text('AM'),
+                     ),
+                     PopupMenuItem(
+                       value: 'CC',
+                       child: Text('CC'),
+                     ),
+                     PopupMenuItem(
+                       value: 'DT',
+                       child: Text('DT'),
+                     ),
+                     PopupMenuItem(
+                       value: 'PS',
+                       child: Text('PS'),
+                     ), PopupMenuItem(
+                       value: 'MM',
+                       child: Text('MM'),
+                     ),
+                     PopupMenuItem(
+                       value: 'MJ',
+                       child: Text('MJ'),
+                     ),
+                   ],onSelected: (value){
+                     setState(() {
+                       sectionMentor =value;
+                     });
+                 },
+                 ),)
+               ],
+             ),
+
             ],),
             Expanded(
                 child: ListView.builder(
@@ -35,19 +151,9 @@ class StudentsListScreen extends StatelessWidget {
                     return ChangeNotifierProvider.value(
                       value: allList[i],
                       child: StudentTile(
-//                        studentName: allList[i].studentName,
-//                        section: allList[i].section,
-//                        contactNo: allList[i].contactNo,
-//                        emailId: allList[i].emailId,
-//                         mentor: allList[i].mentor,
-//                        parentNo: allList[i].parentNo,
-//                        photo: allList[i].photo,
-//                        isSurveillance: allList[i].isSurveillance,
-
                       ),
                     );
                     }),
-
             ),
           ],
         ),

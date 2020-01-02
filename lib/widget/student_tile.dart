@@ -1,37 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 import '../provider/student.dart';
 
+
 class StudentTile extends StatelessWidget {
-//  final String studentName;
-//  final String section;
-//  final String mentor;
-//  final String emailId;
-//  final String photo;
-//  final int contactNo;
-//  final int parentNo;
-//  final bool isSurveillance;
 
-//  StudentTile({
-//    this.studentName,
-//    this.section,
-//    this.mentor,
-//    this.emailId,
-//    this.photo,
-//    this.isSurveillance,
-//    this.contactNo,
-//    this.parentNo,
-//  });
+  Future _lunch(var numberEmail) async {
+    final url = numberEmail;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'error';
+    }
+  }
 
-Widget todo(){
-  return PopupMenuItem();
-}
 
   @override
   Widget build(BuildContext context) {
-    final student =Provider.of<Student>(context,listen: false);
+    final student = Provider.of<Student>(context, listen: false);
     print('build');
     return Card(
       child: ListTile(
@@ -41,38 +31,62 @@ Widget todo(){
           backgroundImage: AssetImage(student.photo),
         ),
         trailing: Row(
-         // mainAxisAlignment: MainAxisAlignment.end,
+          // mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
-
           children: <Widget>[
-                //SizedBox(width: 6,),
-            Consumer<Student>(builder: (cont,studentCons,ch){
-              return GestureDetector(
-                  child: Icon(studentCons.isSurveillance?Icons.star:Icons.star_border),
+            Consumer<Student>(
+              builder: (cont, studentCons, ch) {
+                return GestureDetector(
+                  child: Icon(studentCons.isSurveillance
+                      ? Icons.star
+                      : Icons.star_border),
                   onTap: () {
-                student.changeSurveillance();},
-              );},
+                    student.changeSurveillance();
+                  },
+                );
+              },
             ),
             PopupMenuButton(
-              icon: Icon(Icons.more_vert,),
-            itemBuilder: (_)=>[
-              PopupMenuItem(child: GestureDetector(
-                child: Column(children: <Widget>[
-                  Text("Contact No"),
-                  Text('${student.contactNo}')]),
-              ),),PopupMenuItem(child: GestureDetector(
-                child: Column(children: <Widget>[
-                  Text("Parent No"),
-                  Text('${student.parentNo}')]),
-              ),),
-              PopupMenuItem(
-                child: GestureDetector(
-              child:Text('${student.emailId}')
-                ),
+              icon: Icon(
+                Icons.more_vert,
               ),
-            ],),
+              itemBuilder: (_) => [
+                PopupMenuItem(
+                  value: 'tel:${student.contactNo}',
+                    child: Column(children: <Widget>[
+                      Text("Contact No"),
+                      Text('${student.contactNo}')
+                    ]),
+                ),
+                PopupMenuItem(
+                  value: 'tel:${student.parentNo}',
+                  child: GestureDetector(
+                    child: Column(children: <Widget>[
+                      Text("Parent No"),
+                      Text('${student.parentNo}')
+                    ]),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'mailto:${student.emailId}',
+                  child: GestureDetector(
 
+                      child: Text('${student.emailId}')),
+                ),
+                PopupMenuItem(
+                  value: 'sms:${student.parentNo}',
+                  child: GestureDetector(
+                    child: Column(children: <Widget>[
+                      Text("Message"),
+                      Text('${student.contactNo}')
+                    ]),
+                  ),
+                ),
+              ],
+              onSelected: (value)=>_lunch(value),
+             // onCanceled: (){Navigator.of(context).pop();},
 
+            ),
           ],
         ),
         subtitle: Row(

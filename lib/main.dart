@@ -5,6 +5,7 @@ import './screens/dashboard_screen.dart';
 import './screens/students_list_screen.dart';
 import './provider/students.dart';
 import './provider/student.dart';
+import './screens/surveillance_list.dart';
 
 void main(){
   runApp(TheManagement());
@@ -34,6 +35,7 @@ class TheManagement extends StatelessWidget {
           home: DashBoardScreen(),
           routes: {
             StudentsListScreen.routeName:(conttext)=>StudentsListScreen(),
+            SurveillanceList.routeName:(context)=>SurveillanceList(),
           },
         ),
       );

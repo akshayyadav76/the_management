@@ -284,4 +284,19 @@ class Students with ChangeNotifier {
   List<Student> get allStudents {
     return [..._allStudents];
   }
+
+  List<Student> section(String section){
+    return _allStudents.where((list){
+      return list.section ==section;}).toList();
+  }
+
+  List<Student> mentor(String mentor){
+    return _allStudents.where((list){
+      return list.mentor ==mentor;}).toList();
+  }
+  List<Student>surveillanceList(){
+    return _allStudents.where((list)=>list.isSurveillance).toList();
+  }
+
+
 }
