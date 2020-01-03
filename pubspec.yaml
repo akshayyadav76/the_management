@@ -47,7 +47,7 @@ flutter:
     - assets/ocm.jpg
     - assets/ocmlogo.png
     - assets/faculty_images/demo.jpg
-    - assets/photos/
+    - assets/students_photos/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

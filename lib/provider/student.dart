@@ -18,8 +18,10 @@ class Student with ChangeNotifier{
   int contactNo;
   int parentNo;
   bool isSurveillance;
+  int sNo;
 
   Student({
+    @required this.sNo,
    @required this.rollNumberId,
    @required this.studentName,
     this.fatherName,
