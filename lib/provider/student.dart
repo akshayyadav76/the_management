@@ -15,8 +15,8 @@ class Student with ChangeNotifier{
   String permanentAddress;
   String emailId;
   String photo;
-  int contactNo;
-  int parentNo;
+  String contactNo;
+  String parentNo;
   bool isSurveillance;
   int sNo;
 

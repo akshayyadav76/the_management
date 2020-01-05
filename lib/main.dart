@@ -6,6 +6,7 @@ import './screens/students_list_screen.dart';
 import './provider/students.dart';
 import './provider/student.dart';
 import './screens/surveillance_list.dart';
+import './screens/erp_login_screen.dart';
 
 void main(){
   runApp(TheManagement());
@@ -36,6 +37,7 @@ class TheManagement extends StatelessWidget {
           routes: {
             StudentsListScreen.routeName:(conttext)=>StudentsListScreen(),
             SurveillanceList.routeName:(context)=>SurveillanceList(),
+            ErpLoginScreen.routName03:(context)=>ErpLoginScreen(),
           },
         ),
       );

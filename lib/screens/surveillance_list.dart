@@ -16,10 +16,13 @@ class SurveillanceList extends StatelessWidget {
       body: ListView.builder(
           itemCount: surveillanceList.length,
           itemBuilder: (context,i)=>
-
               ChangeNotifierProvider.value(
               value:  surveillanceList[i],
-              child: SurveillanceTile(),
+              child: Dismissible(
+                key: ValueKey(surveillanceList[i].rollNumberId),
+                  background: Container(color: Colors.red,),
+                  direction: DismissDirection.horizontal,
+                  child: SurveillanceTile()),
               )
       ),
     );

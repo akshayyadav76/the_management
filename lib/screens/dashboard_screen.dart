@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../widget/circular_image.dart';
 import '../widget/my_drawer.dart';
 import '../screens/students_list_screen.dart';
+import '../provider/students.dart';
+
+
 
 class DashBoardScreen extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       _scaffoldKey.currentState.openDrawer();
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,29 +37,31 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       drawer: MyDrawer(),
       body: SafeArea(
         child: Container(
+
           height: height * 1,
           width: double.infinity,
           child: Column(
             children: <Widget>[
               Stack(
                 children: <Widget>[
-                  Row(
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Text("the"),
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.of(context).pushNamed(StudentsListScreen.routeName);
-                      },
-                      child: CircularImage(
-                        facultyName: "Dr.PK Chopra",
-                        facultyImage: 'assets/faculty_images/demo.jpg',),
+                    Row(
+                     crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Text("the"),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushNamed(StudentsListScreen.routeName);
+                        },
+                        child: CircularImage(
+                          facultyName: "Dr.PK Chopra",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                      ),
+                       // ),
+                        Text("Mana"),
+                      ],
                     ),
-                     // ),
-                      Text("Mana"),
-                    ],
-                  ),
+
                   IconButton(icon: Icon(Icons.dehaze),onPressed: dv,),
                 ],
               ),
@@ -74,7 +80,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   ],
                 ),
               ),
-              Text('------Recent------'),
+              Text("------Recent Call's------" ,style: TextStyle(fontSize: 20),),
               Expanded(child: SingleChildScrollView(
                 child: Column(children: <Widget>[
                   Text('ssfsdf',style: TextStyle(fontSize: 50),),

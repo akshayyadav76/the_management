@@ -16,13 +16,38 @@ class StudentsListScreen extends StatefulWidget {
 }
 
 class _StudentsListScreenState extends State<StudentsListScreen> {
-
+  bool isLoding =false;
+  bool intitRun =true;
+  bool isStopgGetMore =true;
   String sectionMentor ='All';
 
   @override
+  void didChangeDependencies() {
+    if(intitRun){
+      setState(() {
+        isLoding=true;
+      });
+
+    }
+    intitRun=false;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final providerData =Provider.of<Students>(context,listen: false);
+    final providerData =Provider.of<Students>(context);
+    if(isStopgGetMore){
+      providerData.getData().then((_){
+        setState(() {
+          isLoding =false;
+          isStopgGetMore =false;
+
+        });
+      });
+    }
+
     var allList = providerData.allStudents;
+    print("aaa${allList[1].photo}");
     if(sectionMentor =='All'){
       allList =providerData.allStudents;
     }else if(sectionMentor =='A'||sectionMentor=='B'||sectionMentor=='C'){
@@ -145,7 +170,8 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
 
             ],),
             Expanded(
-                child: ListView.builder(
+                child:isLoding ?Center(
+                    child: CircularProgressIndicator()): ListView.builder(
                   itemCount: allList.length,
                     itemBuilder: (context,i){
                     return ChangeNotifierProvider.value(
