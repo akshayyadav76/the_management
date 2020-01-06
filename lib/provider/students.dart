@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 
 
@@ -3323,36 +3324,38 @@ class Students with ChangeNotifier {
 //    ),
   ];
 
-  Future<void>getData()async{
-    final  url ='https://top-drawer-objects.000webhostapp.com/con.php';
-    final response= await http.get(url);
-    final resolveData=json.decode(response.body);
-    print(resolveData.length);
-
-    for(int i=0;i < resolveData.length;i++){
-      var addInLIst= Student(
+  Future<void>getData()async {
+  //  try{
+    final url = 'https://top-drawer-objects.000webhostapp.com/con.php';
+    final response = await http.get(url);
+    final resolveData = json.decode(response.body);
+//    print(resolveData.length);
+//   print(response.statusCode);
+   List<Student>httpList=[];
+    for (int i = 0; i < resolveData.length; i++) {
+      var addInLIst = Student(
         sNo: resolveData[i]['sNO'],
-        rollNumberId:	resolveData[i]['rollNumverId'],
-        studentName:	resolveData[i]['studentName'],
-        fatherName:	resolveData[i]['fatherName'],
-        motherName:	resolveData[i]['motherName'],
-        section:	resolveData[i]['section'],
-        category:	resolveData[i]['category'],
-        dob:	resolveData[i]['dob'],
+        rollNumberId: resolveData[i]['rollNumverId'],
+        studentName: resolveData[i]['studentName'],
+        fatherName: resolveData[i]['fatherName'],
+        motherName: resolveData[i]['motherName'],
+        section: resolveData[i]['section'],
+        category: resolveData[i]['category'],
+        dob: resolveData[i]['dob'],
         mentor: resolveData[i]['mentor'],
-        localAddress:	resolveData[i]['localAddress'],
-        permanentAddress:	resolveData[i]['permanentAddress'],
-        emailId:	resolveData[i]['emailId'],
+        localAddress: resolveData[i]['localAddress'],
+        permanentAddress: resolveData[i]['permanentAddress'],
+        emailId: resolveData[i]['emailId'],
         contactNo: resolveData[i]['contactNo'],
-        parentNo:	resolveData[i]['parentNo'],
+        parentNo: resolveData[i]['parentNo'],
         //isSurveillance:	resolveData[i]['isSurveillance'] as bool,//mysql boolan error will be soved leater
         photo: resolveData[i]['Photo'],
       );
-      //print(addInLIst);
-      _allStudents.add(addInLIst);
-      notifyListeners();
-      print("ssssssssssss${_allStudents[i].photo}")
-      ;    }
+      httpList.add(addInLIst);
+    }
+    _allStudents=httpList;
+    notifyListeners();
+    print(httpList.length);
   }
 
   List<Student> get allStudents {

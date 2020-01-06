@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widget/circular_image.dart';
 import '../widget/my_drawer.dart';
@@ -24,16 +25,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<Students>(context).getData();
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       key: _scaffoldKey,
-      //appBar: AppBar(),
       backgroundColor: Theme.of(context).primaryColor,
-//      appBar: AppBar(
-//        shape: CircleBorder(side: BorderSide(style:BorderStyle.none,),),
-//
-//      ),
       drawer: MyDrawer(),
       body: SafeArea(
         child: Container(
