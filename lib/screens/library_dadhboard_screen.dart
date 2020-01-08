@@ -4,39 +4,132 @@ import '../widget/book_container.dart';
 
 class LibraryDashbordScreen extends StatelessWidget {
   static const routeName04 ='/libraryscreen';
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: SafeArea(
-       child: Column(
-         children: <Widget>[
-           Container(
-             margin: EdgeInsets.all(20),
-             alignment: Alignment.topCenter,
-             child: Text("LIbrary",style: TextStyle(fontSize: 30),),
-             decoration: BoxDecoration(
-                 //border: Border.all(color: Colors.orange),
-               borderRadius: BorderRadius.circular(40),
-               
-              
-             ),
+      body: ListView(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 280.0,
+                    width: double.infinity,
+                    color: Colors.yellow[700],
+                  ),
+                  Positioned(
+                    bottom: 50.0,
+                    right: 100.0,
+                    child: Container(
+                      width: 400.0,
+                      height: 400.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200.0),
+                          color: Colors.yellow[400].withOpacity(0.5)),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 100.0,
+                    left: 150.0,
+                    child: Container(
+                      width: 300.0,
+                      height: 300.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200.0),
+                          color: Colors.yellow[400].withOpacity(0.5)),
+                    ),
+                  ),
+                  Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Container(
+                            width: 75.0,
+                            height: 75.0,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: Colors.white,
+                                    style: BorderStyle.solid,
+                                    width: 2.0),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/ocmlogo.png'))),
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text('OCM',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Quicksand',
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold)),
+                              Text('Library',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Quicksand',
+                                      fontSize: 20.0))
+                            ],
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 230.0,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 25.0,
+                      ),
 
-           ),
-           Expanded(
-             child: GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-               crossAxisCount: 2,childAspectRatio: 3/2,mainAxisSpacing: 10,crossAxisSpacing: 10
-             ),children: <Widget>[
-               BookContainer(30,0,"MB Series"),
-               BookContainer(0,30,"MC Series"),
-               BookContainer(30,0,"MG Series"),
-               BookContainer(0,30,"AK Series"),
-             ],),
-           ),
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              BookContainer(
+                                  'MB Series', '5', 'assets/card.png'),
+                              BookContainer(
+                                   'MC Series', '2', 'assets/box.png'),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              BookContainer('GM Series', '8', 'assets/trucks.png'),
+                              BookContainer('AK Series', '0', 'assets/returnbox.png'),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
 
-         ],
-       ),
-     ),
 
+              SizedBox(height: 10.0,),
+            ],
+          )
+        ],
+      ),
     );
   }
+
+  Widget customCards(BuildContext context,) {
+
+  }
+
+
 }
