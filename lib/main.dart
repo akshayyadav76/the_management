@@ -7,6 +7,7 @@ import './provider/students.dart';
 import './provider/student.dart';
 import './screens/surveillance_list.dart';
 import './screens/erp_login_screen.dart';
+import './screens/library_dadhboard_screen.dart';
 
 void main(){
   runApp(TheManagement());
@@ -38,6 +39,7 @@ class TheManagement extends StatelessWidget {
             StudentsListScreen.routeName:(conttext)=>StudentsListScreen(),
             SurveillanceList.routeName:(context)=>SurveillanceList(),
             ErpLoginScreen.routName03:(context)=>ErpLoginScreen(),
+            LibraryDashbordScreen.routeName04:(context)=>LibraryDashbordScreen(),
           },
         ),
       );

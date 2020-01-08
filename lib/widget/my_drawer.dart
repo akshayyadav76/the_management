@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/surveillance_list.dart';
 import '../screens/erp_login_screen.dart';
+import '../screens/library_dadhboard_screen.dart';
 
 
 class MyDrawer extends StatelessWidget {
@@ -28,7 +29,9 @@ class MyDrawer extends StatelessWidget {
           ListTile(title: Text("Servilas LIst"),onTap: (){
             Navigator.of(context).pushNamed(SurveillanceList.routeName);
           },),
-          ListTile(title: Text("something realated to library"),),
+          ListTile(title: Text("Library"),onTap: (){
+            Navigator.of(context).pushNamed(LibraryDashbordScreen.routeName04);
+          },),
           ListTile(title: Text("image of college number"),),
 
         ],
