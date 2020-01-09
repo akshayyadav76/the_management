@@ -25,7 +25,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<Students>(context).getData();
+
+    Provider.of<Students>(context,listen: false).getData();
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(

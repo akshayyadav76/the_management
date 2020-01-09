@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../widget/book_container.dart';
-import '../screens/books_list_screen.dart';
+import 'package:provider/provider.dart';
+import '../provider/students.dart';
+
 
 class LibraryDashbordScreen extends StatelessWidget {
   static const routeName04 ='/libraryscreen';
@@ -9,6 +11,8 @@ class LibraryDashbordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final booksData=Provider.of<Students>(context,listen: false).getBooks();
+
     return Scaffold(
       body: ListView(
         children: <Widget>[
@@ -99,17 +103,17 @@ class LibraryDashbordScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               BookContainer(
-                                  'MB Series', '5', 'assets/card.png'),
+                                  'MB', '5', 'assets/card.png'),
                               BookContainer(
-                                   'MC Series', '2', 'assets/box.png'),
+                                   'MC', '2', 'assets/box.png'),
                             ],
                           ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              BookContainer('GM Series', '8', 'assets/trucks.png'),
-                              BookContainer('AK Series', '0', 'assets/returnbox.png'),
+                              BookContainer('MG', '8', 'assets/trucks.png'),
+                              BookContainer('AK', '0', 'assets/returnbox.png'),
                             ],
                           ),
                         ],

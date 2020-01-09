@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/students.dart';
 
 class BooksListScreen extends StatelessWidget {
   static const routeName05 = '/bookslistscreen';
 
-  String title = 'ss';
+
 
   @override
   Widget build(BuildContext context) {
+    final seriesName= ModalRoute.of(context).settings.arguments;
+    final seriesBooksData = Provider.of<Students>(context,listen: false).series(seriesName);
+    print("mb series data ${seriesBooksData}");
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text('ss'),
       ),
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
