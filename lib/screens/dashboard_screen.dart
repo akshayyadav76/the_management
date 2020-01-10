@@ -15,18 +15,33 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool check=true;
 
   void dv() {
     setState(() {
       _scaffoldKey.currentState.openDrawer();
     });
   }
+  @override
+  void initState() {
+
+    super.initState();
+  }
 
 
   @override
   Widget build(BuildContext context) {
+   print("sssssssssssssssssssssssssssssssssssssssssss$check");
 
     Provider.of<Students>(context,listen: false).getData();
+    if(check){
+      Provider.of<Students>(context,listen: false).getBooks().then((context){
+        setState(() {
+          check =false;
+        });
+      });
+    }
+
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(

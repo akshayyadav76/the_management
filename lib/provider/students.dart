@@ -46,22 +46,6 @@ class Students with ChangeNotifier {
     print(httpList.length);
   }
 
-  Future<void>getBooks()async{
-    final url ='https://top-drawer-objects.000webhostapp.com/books.php';
-    final booksJson=await http.get(url);
-    final reposedData =json.decode(booksJson.body);
-    _booksData=reposedData ;
-    notifyListeners();
-
-    print(reposedData);
-  }
-  
-  List<dynamic>series(String seriesType){
-    print("serite boooks lgnth now${_booksData[0]}");
-    _booksData.where((data){
-      return data['Series']==seriesType;
-    }).toList();
-  }
   
   List<Map<String,dynamic>>get booksData{
     return [..._booksData];
@@ -89,6 +73,25 @@ class Students with ChangeNotifier {
 
   }
 
+
+  //----books methoes-----------
+
+  Future<void>getBooks()async{
+    final url ='https://top-drawer-objects.000webhostapp.com/books.php';
+    final booksJson=await http.get(url);
+    final reposedData =json.decode(booksJson.body);
+    _booksData=reposedData ;
+    notifyListeners();
+
+    print(reposedData);
+  }
+
+  List<dynamic>series(String seriesType){
+    //| print("serite boooks lgnth now${_booksData[0]}");
+    return _booksData.where((data){  //return not added here
+      return data['Series']==seriesType;
+    }).toList();
+  }
 
 
 }
