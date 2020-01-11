@@ -20,7 +20,7 @@ class BooksListScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("${seriesName["title"]} Series Books"),centerTitle: true,
+        title: Text("${seriesName["title"]} Series"),centerTitle: true,
          backgroundColor: Colors.yellow[600],
       ),
       body: Stack(

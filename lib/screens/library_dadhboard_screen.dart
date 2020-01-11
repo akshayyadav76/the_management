@@ -149,14 +149,14 @@ class LibraryDashbordScreen extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                   // CircularCategory("finance"),
-//                    CircularCategory(),
-//                    CircularCategory(),
-//                    CircularCategory(),
-//                    CircularCategory(),
-//                    CircularCategory(),
-
-
+                    CircularCategory("Subject_Title","MANAGEMENT"),
+                    CircularCategory("Subject_Title",'COMMUNICATION'),
+                    CircularCategory("Subject_Title",'MARKETING'),
+                    CircularCategory("Subject_Title",'ECONOMICS'),
+                    CircularCategory("Subject_Title",'ETHICS'),
+                    CircularCategory("Subject_Title",'FINANCE & ACCOUNTING'),
+                    CircularCategory("Subject_Title",'HRM & OB'),
+                    CircularCategory("Subject_Title",'OTHERS'),
                   ],
                 ),
               ),

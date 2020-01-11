@@ -51,14 +51,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       drawer: MyDrawer(),
       body: SafeArea(
         child: Container(
-
           height: height * 1,
           width: double.infinity,
           child: Column(
             children: <Widget>[
               Stack(
                 children: <Widget>[
+                  Positioned(
+                    bottom: 0.0,
+                    right:110.0,
+                    child: Container(
+                      width: 500.0,
+                      height: 500.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                          color: Colors.yellow[400].withOpacity(0.5)),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0.0,
+                    left: 90.0,
+                    child: Container(
+                      width: 300.0,
+                      height: 300.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                          color: Colors.yellow[400].withOpacity(0.5)),
+                    ),
+                  ),
+
                     Row(
+
                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
@@ -77,32 +100,35 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
 
                   IconButton(icon: Icon(Icons.dehaze),onPressed: dv,),
+
+                  Container(
+                    margin: EdgeInsets.only(top: 120),
+                    height: 120,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        CircularImage(facultyName: "MR.Amit Khare",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Ms.Ansu Bhagya",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Mr.Ashish Mishra",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Chetan Chauhan",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "MR.Deepak Tiwari",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Dr.Mamta Manshani",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Poorva Sakergayen",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        CircularImage(facultyName: "Mansi Jani",
+                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              Container(
-                height: 120,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    CircularImage(facultyName: "MR.Amit Khare",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Ms.Ansu Bhagya",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Mr.Ashish Mishra",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Chetan Chauhan",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "MR.Deepak Tiwari",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Dr.Mamta Manshani",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Poorva Sakergayen",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                    CircularImage(facultyName: "Mansi Jani",
-                      facultyImage: 'assets/faculty_images/demo.jpg',),
-                  ],
-                ),
-              ),
+
               Text("------Recent Call's------" ,style: TextStyle(fontSize: 20),),
               Expanded(child: SingleChildScrollView(
                 child: Column(children: <Widget>[
