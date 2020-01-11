@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../widget/book_container.dart';
+import '../provider/students.dart';
+import 'package:provider/provider.dart';
+import '../widget/circular_categery.dart';
 
 
 class LibraryDashbordScreen extends StatelessWidget {
@@ -8,7 +11,7 @@ class LibraryDashbordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    Provider.of<Students>(context,listen: false).getBooks();
     return Scaffold(
       body: ListView(
         children: <Widget>[
@@ -99,26 +102,64 @@ class LibraryDashbordScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               BookContainer(
-                                  'MB', '5', 'assets/series_icon/economics.png'),
+                                  'MB', '1506', 'assets/series_icon/economics.png',"Series"),
                               BookContainer(
-                                   'MC', '2', 'assets/series_icon/computer.png'),
+                                   'MC', '471', 'assets/series_icon/computer.png',"Series"),
                             ],
                           ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              BookContainer('MG', '8', 'assets/series_icon/law.png'),
-                              BookContainer('AK', '0', 'assets/series_icon/calculator.png'),
+                              BookContainer('MG', '76', 'assets/series_icon/law.png',"Series"),
+                              BookContainer('AK', '35', 'assets/series_icon/calculator.png',"Series"),
                             ],
                           ),
+                          SizedBox(height: 5,),
+                          Material(
+                            elevation: 5.0,
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Container(
+                              height: 70.0,
+                              width: (MediaQuery.of(context).size.width / 1.0) - 100.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Image.asset('assets/delnet_logo.jpg',
+                                        fit: BoxFit.contain,),
+                                ],
+                              ),
+                            ),
+                          ),
+
+
+
                         ],
-                      )
+                      ),
+
                     ],
                   )
                 ],
               ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  child: Text("By Subjects",)),
+              Container(
+                height: 100,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                   // CircularCategory("finance"),
+//                    CircularCategory(),
+//                    CircularCategory(),
+//                    CircularCategory(),
+//                    CircularCategory(),
+//                    CircularCategory(),
 
+
+                  ],
+                ),
+              ),
 
               SizedBox(height: 10.0,),
             ],

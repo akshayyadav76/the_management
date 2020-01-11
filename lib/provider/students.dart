@@ -86,12 +86,13 @@ class Students with ChangeNotifier {
     print(reposedData);
   }
 
-  List<dynamic>series(String seriesType){
+  List<dynamic>series(String series,String seriesType){
     //| print("serite boooks lgnth now${_booksData[0]}");
     return _booksData.where((data){  //return not added here
-      return data['Series']==seriesType;
+      return data[series]==seriesType;
     }).toList();
   }
+
 
 
 }

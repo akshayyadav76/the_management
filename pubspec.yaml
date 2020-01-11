@@ -54,6 +54,7 @@ flutter:
     - assets/students_photos/
     - assets/books_icon.png
     - assets/series_icon/
+    - assets/delnet_logo.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

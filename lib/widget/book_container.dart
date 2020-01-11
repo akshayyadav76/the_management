@@ -6,15 +6,18 @@ class BookContainer extends StatelessWidget {
   final String title;
   final String qty;
   final String imagePath;
+  final String filterName;
 
 
-  BookContainer(this.title,this.qty,this.imagePath);
+  BookContainer(this.title,this.qty,this.imagePath,this.filterName);
 
   @override
   Widget build(BuildContext context) {
      return InkWell(
        onTap:(){
-         Navigator.of(context).pushNamed(BooksListScreen.routeName05,arguments: title);} ,
+         Navigator.of(context).pushNamed(BooksListScreen.routeName05,arguments: {
+           "title":title,
+           "filerName":filterName},);} ,
        child: Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(8.0),

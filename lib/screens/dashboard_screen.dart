@@ -34,13 +34,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
    print("sssssssssssssssssssssssssssssssssssssssssss$check");
 
     Provider.of<Students>(context,listen: false).getData();
-    if(check){
-      Provider.of<Students>(context,listen: false).getBooks().then((context){
-        setState(() {
-          check =false;
-        });
-      });
-    }
+
+//    if(check){
+//      Provider.of<Students>(context,listen: false).getBooks().then((context){
+//        setState(() {
+//          check =false;
+//        });
+//      });
+//    }
 
     var height = MediaQuery.of(context).size.height;
 
