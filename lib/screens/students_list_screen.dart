@@ -179,6 +179,7 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
                     child: CircularProgressIndicator()): ListView.builder(
                   itemCount: allList.length,
                     itemBuilder: (context,i){
+                    print(allList[2].rollNumberId);
                     return ChangeNotifierProvider.value(
                       value: allList[i],
                       child: StudentTile(

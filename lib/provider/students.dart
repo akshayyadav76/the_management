@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
-
+import '../provider/recent.dart';
 
 import './student.dart';
 
@@ -10,6 +10,7 @@ class Students with ChangeNotifier {
 
   List<Student> _allStudents = [];
   List<dynamic>_booksData=[];
+  List<Student>_servilace=[];
 
 
   Future<void>getData()async {
@@ -23,7 +24,7 @@ class Students with ChangeNotifier {
     for (int i = 0; i < resolveData.length; i++) {
       var addInLIst = Student(
         sNo: resolveData[i]['sNO'],
-        rollNumberId: resolveData[i]['rollNumverId'],
+        rollNumberId: resolveData[i]['rollNumberId'],
         studentName: resolveData[i]['studentName'],
         fatherName: resolveData[i]['fatherName'],
         motherName: resolveData[i]['motherName'],
@@ -65,8 +66,28 @@ class Students with ChangeNotifier {
     return _allStudents.where((list){
       return list.mentor ==mentor;}).toList();
   }
+
+
   List<Student>surveillanceList(){
     return _allStudents.where((list)=>list.isSurveillance).toList();
+  }
+
+  List<Student>get servilace {
+    return [..._servilace];
+  }
+  Future<void>dta()async{
+    final servilanceLIst =  await DbHelper.read("servilance");
+    _servilace= servilanceLIst.map((data){
+       return Student(
+         rollNumberId:data['rollno'],
+         photo: data['photo'],
+         mentor: data['mentor'],
+         section: data['section'],
+       );
+     }).toList();
+     notifyListeners();
+
+    print('database read $servilanceLIst');
   }
 
   Future<void>getBooksData()async{

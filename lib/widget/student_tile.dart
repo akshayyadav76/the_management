@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 
 import '../provider/student.dart';
+import '../provider/recent.dart';
 
 
 class StudentTile extends StatelessWidget {
@@ -41,7 +42,15 @@ class StudentTile extends StatelessWidget {
                       ? Icons.star
                       : Icons.star_border),
                   onTap: () {
-                    student.changeSurveillance();
+                    print(studentCons.rollNumberId);
+                    studentCons.changeSurveillance();
+                    DbHelper.insert("servilance", {
+                      'rollno':student.rollNumberId,
+                      "name":student.studentName,
+                      "photo":student.photo,
+                      "mentor":student.mentor,
+                      "section":student.section,
+                    });
                   },
                 );
               },

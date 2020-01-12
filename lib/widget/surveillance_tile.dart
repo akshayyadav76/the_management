@@ -10,7 +10,9 @@ class SurveillanceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sruvilance=Provider.of<Student>(context);
-    return ListTile(title: Text(sruvilance.studentName),
+
+    return ListTile(
+      title: Text(sruvilance.studentName),
       leading: CircleAvatar(backgroundImage: AssetImage(sruvilance.photo),),
       subtitle: Row(
         children: <Widget>[
@@ -18,7 +20,6 @@ class SurveillanceTile extends StatelessWidget {
           Text('Mentor: ${sruvilance.mentor}'),
         ],
       ),
-
     );
   }
 }
