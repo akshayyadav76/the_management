@@ -34,4 +34,9 @@ class DbHelper{
     return db.query(table);
   }
 
+  static Future<void>delete(String table,String rollno)async{
+    final db= await DbHelper.myDatabase();
+    db.delete(table,where: "rollno =?",whereArgs: [rollno]);
+  }
+
 }

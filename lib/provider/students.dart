@@ -80,6 +80,7 @@ class Students with ChangeNotifier {
     _servilace= servilanceLIst.map((data){
        return Student(
          rollNumberId:data['rollno'],
+         studentName: data['name'],
          photo: data['photo'],
          mentor: data['mentor'],
          section: data['section'],
@@ -88,6 +89,12 @@ class Students with ChangeNotifier {
      notifyListeners();
 
     print('database read $servilanceLIst');
+    print('database read ${_servilace.length}');
+
+  }
+
+  Future<void>delete(String table,String rollno)async{
+   await DbHelper.delete(table, rollno);
   }
 
   Future<void>getBooksData()async{

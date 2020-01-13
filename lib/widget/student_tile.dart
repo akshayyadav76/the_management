@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../provider/student.dart';
 import '../provider/recent.dart';
+import '../provider/students.dart';
 
 
 class StudentTile extends StatelessWidget {
@@ -55,45 +56,53 @@ class StudentTile extends StatelessWidget {
                 );
               },
             ),
-            PopupMenuButton(
-              icon: Icon(
-                Icons.more_vert,
-              ),
-              itemBuilder: (_) => [
-                PopupMenuItem(
-                  value: 'tel:${student.contactNo}',
-                    child: Column(children: <Widget>[
-                      Text("Contact No"),
-                      Text('${student.contactNo}')
-                    ]),
-                ),
-                PopupMenuItem(
-                  value: 'tel:${student.parentNo}',
-                  child: GestureDetector(
-                    child: Column(children: <Widget>[
-                      Text("Parent No"),
-                      Text('${student.parentNo}')
-                    ]),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'mailto:${student.emailId}',
-                  child: GestureDetector(
+            Consumer<Students>(
+              builder: (context,data,_){
+                return PopupMenuButton(
+                    icon: Icon(
+                      Icons.more_vert,
+                    ),
+                    itemBuilder: (_) => [
+                      PopupMenuItem(
+                        value: 'tel:${student.contactNo}',
+                        child: Column(children: <Widget>[
+                          Text("Contact No"),
+                          Text('${student.contactNo}')
+                        ]),
+                      ),
+                      PopupMenuItem(
+                        value: 'tel:${student.parentNo}',
+                        child: GestureDetector(
+                          child: Column(children: <Widget>[
+                            Text("Parent No"),
+                            Text('${student.parentNo}')
+                          ]),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'mailto:${student.emailId}',
+                        child: GestureDetector(
 
-                      child: Text('${student.emailId}')),
-                ),
-                PopupMenuItem(
-                  value: 'sms:${student.parentNo}',
-                  child: GestureDetector(
-                    child: Column(children: <Widget>[
-                      Text("Message"),
-                      Text('${student.contactNo}')
-                    ]),
-                  ),
-                ),
-              ],
-              onSelected: (value)=>_lunch(value),
-             // onCanceled: (){Navigator.of(context).pop();},
+                            child: Text('${student.emailId}')),
+                      ),
+                      PopupMenuItem(
+                        value: 'sms:${student.parentNo}',
+                        child: GestureDetector(
+                          child: Column(children: <Widget>[
+                            Text("Message"),
+                            Text('${student.contactNo}')
+                          ]),
+                        ),
+                      ),
+                    ],
+                    onSelected: (value){
+                      return _lunch(value);
+
+                    }
+
+
+                );
+              },
 
             ),
           ],

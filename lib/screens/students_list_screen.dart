@@ -35,7 +35,7 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final providerData =Provider.of<Students>(context,listen: false);
+    final providerData =Provider.of<Students>(context,listen: true);
 //    if(isStopgGetMore){
 //        providerData.getData().then((_){
 //          setState(() {

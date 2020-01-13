@@ -13,9 +13,10 @@ class SurveillanceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final surveillanceList =Provider.of<Students>(context,listen: false);
+    final surveillanceList =Provider.of<Students>(context,listen: true);
     surveillanceList.dta();
-    final list =surveillanceList.servilace;
+    var list =surveillanceList.servilace;
+    print(' lenght of list ${list.length}');
     print(list);
 
 
@@ -31,10 +32,12 @@ class SurveillanceList extends StatelessWidget {
               ChangeNotifierProvider.value(
               value:  list[i],
               child: Dismissible(
+                  onDismissed:(dire)=> surveillanceList.delete("servilance", list[i].rollNumberId) ,
+
                 key: ValueKey(
                     list[i].rollNumberId),
                   background: Container(color: Colors.red,),
-                  direction: DismissDirection.horizontal,
+                  direction: DismissDirection.startToEnd,
                   child: ListTile(
                     title: Text(list[i].studentName),
                     leading: CircleAvatar(backgroundImage:

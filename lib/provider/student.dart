@@ -21,7 +21,7 @@ class Student with ChangeNotifier{
   int sNo;
 
   Student({
-    @required this.sNo,
+     this.sNo,
    @required this.rollNumberId,
    @required this.studentName,
     this.fatherName,
@@ -32,9 +32,9 @@ class Student with ChangeNotifier{
     this.dob,
     this.localAddress,
     this.permanentAddress,
-   @required this.emailId,
+    this.emailId,
    @required this.photo,
-   @required this.contactNo,
+    this.contactNo,
     this.parentNo,
     this.isSurveillance =false,
 });
