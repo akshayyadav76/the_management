@@ -14,37 +14,45 @@ class StudentsListScreen extends StatefulWidget {
   @override
   _StudentsListScreenState createState() => _StudentsListScreenState();
 }
-
 class _StudentsListScreenState extends State<StudentsListScreen> {
-//  bool isLoding =false;
-//  bool intitRun =true;
+  bool isLoding =false;
+  bool intitRun =true;
   bool isStopgGetMore =true;
   String sectionMentor ='All';
 
-//  @override
-//  void didChangeDependencies(){
-//    if(intitRun){
-//      setState(() {
-//        isLoding=true;
-//      });
-//    }
-//    intitRun=false;
-//    super.didChangeDependencies();
-//  }
+  @override
+  void didChangeDependencies(){
+    if(intitRun){
+      setState(() {
+        isLoding=true;
+      });
+    }
+    intitRun=false;
+    super.didChangeDependencies();
+  }
+  @override
+  void dispose() {
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
 
-    final providerData =Provider.of<Students>(context,listen: true);
-//    if(isStopgGetMore){
-//        providerData.getData().then((_){
-//          setState(() {
-//            isLoding =false;
-//            isStopgGetMore =false;
-//          });
-//        });
-//
-//    }
+    final providerData =Provider.of<Students>(context,listen: false);
+
+    if(isStopgGetMore){
+        providerData.getData().then((_){
+          if(this.mounted){
+            setState(() {
+              isLoding =false;
+              isStopgGetMore =false;
+            });
+          }
+
+        });
+
+    }
 //    providerData.getData().then((_){
 //      setState(() {
 //
@@ -52,6 +60,7 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
 //    });
 
     var allList = providerData.allStudents;
+
     //print("aaa${allList[1].photo}");
     if(sectionMentor =='All'){
       allList =providerData.allStudents;
@@ -65,9 +74,14 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            CircularImage(
-              facultyName: "Dr.PK Chopra",
-              facultyImage: 'assets/faculty_images/demo.jpg',),
+            Center(
+
+                child: CircularImage(
+                  facultyName: "Dr.PK Chopra",
+                  facultyImage: 'assets/faculty_images/demo.jpg',),
+
+            ),
+            SizedBox(height: 8,),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[

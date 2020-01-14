@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../provider/student.dart';
 import '../provider/recent.dart';
-import '../provider/students.dart';
 
 
 class StudentTile extends StatelessWidget {
@@ -56,9 +55,7 @@ class StudentTile extends StatelessWidget {
                 );
               },
             ),
-            Consumer<Students>(
-              builder: (context,data,_){
-                return PopupMenuButton(
+             PopupMenuButton(
                     icon: Icon(
                       Icons.more_vert,
                     ),
@@ -96,15 +93,18 @@ class StudentTile extends StatelessWidget {
                       ),
                     ],
                     onSelected: (value){
+                      DbHelper.insert("recents", {
+                        'rollno':student.rollNumberId,
+                        "name":student.studentName,
+                        "photo":student.photo,
+                        "mentor":student.mentor,
+                        "section":student.section,
+                      });
                       return _lunch(value);
 
+
                     }
-
-
-                );
-              },
-
-            ),
+                ),
           ],
         ),
         subtitle: Row(

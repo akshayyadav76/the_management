@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:the_management/widget/book_container.dart';
+
 
 import '../provider/students.dart';
 
@@ -12,8 +12,7 @@ class BooksListScreen extends StatelessWidget {
 
     final Map seriesName = ModalRoute.of(context).settings.arguments;
 
-    final seriesBooksData =
-        Provider.of<Students>(context, listen: false).series(
+    final seriesBooksData = Provider.of<Students>(context, listen: false).series(
             seriesName["title"],seriesName['filterName']
         );
     print("mb series data ${seriesBooksData.length}");

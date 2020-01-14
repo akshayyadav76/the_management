@@ -11,6 +11,7 @@ class Students with ChangeNotifier {
   List<Student> _allStudents = [];
   List<dynamic>_booksData=[];
   List<Student>_servilace=[];
+  List<Student>_recentList=[];
 
 
   Future<void>getData()async {
@@ -97,9 +98,6 @@ class Students with ChangeNotifier {
    await DbHelper.delete(table, rollno);
   }
 
-  Future<void>getBooksData()async{
-
-  }
 
 
   //----books methoes-----------
@@ -119,6 +117,33 @@ class Students with ChangeNotifier {
     return _booksData.where((data){  //return not added here
       return data[series]==seriesType;
     }).toList();
+  }
+
+  //------------------recents methods
+
+  List<Student>get recents {
+    return [..._recentList];
+  }
+  Future<void>recentsLIst()async{
+    final recentsListGet =  await DbHelper.read("recents");
+    _recentList= recentsListGet.map((data){
+      return Student(
+        rollNumberId:data['rollno'],
+        studentName: data['name'],
+        photo: data['photo'],
+        mentor: data['mentor'],
+        section: data['section'],
+      );
+    }).toList();
+    notifyListeners();
+
+    print('database read $recentsListGet');
+    //print('database read ${_servilace.length}');
+
+  }
+
+  Future<void>recentDelete(String table,String rollno)async{
+    await DbHelper.delete(table, rollno);
   }
 
 

@@ -16,39 +16,38 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   bool check=true;
+  bool getStudent=true;
 
   void dv() {
     setState(() {
       _scaffoldKey.currentState.openDrawer();
     });
   }
-  @override
-  void initState() {
-
-    super.initState();
-  }
-
 
   @override
   Widget build(BuildContext context) {
-   print("sssssssssssssssssssssssssssssssssssssssssss$check");
 
-    Provider.of<Students>(context,listen: false).getData();
-
-//    if(check){
-//      Provider.of<Students>(context,listen: false).getBooks().then((context){
-//        setState(() {
-//          check =false;
-//        });
-//      });
-//    }
+    if(check){
+      Provider.of<Students>(context,listen: false).getBooks().then((context){
+        setState(() {
+          check =false;
+        });
+      });
+    }
+//   if(getStudent){
+//     Provider.of<Students>(context,listen: false).getData().then((context){
+//       setState(() {
+//         getStudent =false;
+//       });
+//     });
+//   }
 
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).primaryColor,
-      drawer: MyDrawer(),
+      drawer:  MyDrawer(),
       body: SafeArea(
         child: Container(
           height: height * 1,
@@ -60,6 +59,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   Positioned(
                     bottom: 0.0,
                     right:110.0,
+
                     child: Container(
                       width: 500.0,
                       height: 500.0,
@@ -79,25 +79,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           color: Colors.yellow[400].withOpacity(0.5)),
                     ),
                   ),
-
-                    Row(
-
-                     crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Text("the"),
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.of(context).pushNamed(StudentsListScreen.routeName);
-                        },
+                      Center(
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pushNamed(StudentsListScreen.routeName);
+                          },
                         child: CircularImage(
-                          facultyName: "Dr.PK Chopra",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                              facultyName: "Dr.PK Chopra",
+                              facultyImage: 'assets/faculty_images/demo.jpg',),
+
+                        ),
                       ),
-                       // ),
-                        Text("Mana"),
-                      ],
-                    ),
+                  SizedBox(height: 5,),
+
 
                   IconButton(icon: Icon(Icons.dehaze),onPressed: dv,),
 
@@ -131,19 +125,30 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
               Text("------Recent Call's------" ,style: TextStyle(fontSize: 20),),
               Expanded(
-                child: SingleChildScrollView(
-                child: Column(children: <Widget>[
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                  Text('ssfsdf',style: TextStyle(fontSize: 50),),
-                ],),
-              ),),
+                child: Consumer<Students>(
+                  builder: (context,data,_){
+                    data.recentsLIst();
+                    return data.recents ==0 ? Center(child: CircularProgressIndicator())
+                        :ListView.builder(
+                      itemCount:  data.recents.length,
+                        itemBuilder:(context,i){
+                        return ListTile(
+                          leading: CircleAvatar(backgroundImage: AssetImage(data.recents[i].photo),),
+                          title: Text(data.recents[i].studentName),
+                          subtitle: Row(
+                            children: <Widget>[
+                              Text('Section: ${(data.recents[i].section)}'),
+                              Text('Mentor: ${(data.recents[i].mentor)}'),
+                            ],
+                          ),
+                          trailing: IconButton(icon: Icon(Icons.delete),onPressed: (){
+                            data.delete('recents', data.recents[i].rollNumberId);
+                          },),
+                        );
+                        } );
+                  },
+
+                )),
             ],
           ),
         ),

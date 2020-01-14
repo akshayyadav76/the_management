@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import './screens/dashboard_screen.dart';
 import './screens/students_list_screen.dart';
 import './provider/students.dart';
-import './provider/student.dart';
 import './screens/surveillance_list.dart';
 import './screens/erp_login_screen.dart';
 import './screens/library_dadhboard_screen.dart';
@@ -19,14 +18,14 @@ class TheManagement extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Students()),
-
+        ChangeNotifierProvider.value(
+            value: Students()),
       ],
-
         child: MaterialApp(
           theme: ThemeData(
             primaryColor: Colors.white,
-            accentColor: Colors.black,
+            accentColor: Colors.amberAccent,
+
             fontFamily: "OleoScript",
             iconTheme: IconThemeData(size: 28),
         textTheme: TextTheme(subtitle: TextStyle(fontSize: 20,color:Colors.green),

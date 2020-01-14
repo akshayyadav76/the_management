@@ -12,24 +12,27 @@ class CircularImage extends StatelessWidget {
     return GestureDetector(
         child: Column(
           children: <Widget>[
-            Card(
-              elevation: 3,
-              shape: CircleBorder(
-                side: BorderSide(
-                  style: BorderStyle.none,
+             Card(
+                elevation: 3,
+                shape: CircleBorder(
+                  side: BorderSide(
+                    style: BorderStyle.none,
+                  ),
                 ),
+                child: Container(
+                    height: 90,
+                    width: 90,
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage(
+                          facultyImage),
+                    )),
               ),
-              child: Container(
-                  height: 90,
-                  width: 90,
-                  alignment: Alignment.center,
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(
-                        facultyImage),
-                  )),
-            ),
-            Text(facultyName),
+
+            FittedBox(
+              fit: BoxFit.fill,
+                child: Text(facultyName)),
           ],
         ));
   }
