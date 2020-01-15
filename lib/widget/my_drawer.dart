@@ -25,7 +25,7 @@ class MyDrawer extends StatelessWidget {
           ),
 
           ListTile(title: Text("Login To ERP"),onTap: (){
-            Navigator.of(context).pushNamed(ErpLoginScreen.routName03);
+            Navigator.of(context).pushNamed(ErpLoginScreen.routName03,arguments: "http://erp.oistbpl.com/");
           },),
           ListTile(title: Text("Servilas LIst"),onTap: (){
             Navigator.of(context).pushNamed(SurveillanceList.routeName);

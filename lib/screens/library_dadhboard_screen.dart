@@ -4,6 +4,7 @@ import '../widget/book_container.dart';
 import '../provider/students.dart';
 import 'package:provider/provider.dart';
 import '../widget/circular_categery.dart';
+import '../screens/erp_login_screen.dart';
 
 
 class LibraryDashbordScreen extends StatelessWidget {
@@ -114,18 +115,21 @@ class LibraryDashbordScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 5,),
-                          Material(
-                            elevation: 5.0,
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Container(
-                              height: 70.0,
-                              width: (MediaQuery.of(context).size.width / 1.0) - 100.0,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Image.asset('assets/delnet_logo.jpg',
-                                        fit: BoxFit.contain,),
-                                ],
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).pushNamed(ErpLoginScreen.routName03,
+                              arguments: 'http://164.100.247.30/');
+                            },
+                            child: Material(
+                              elevation: 5.0,
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Container(
+                                height: 70.0,
+                                width: (MediaQuery.of(context).size.width / 1.0) - 100.0,
+                                child:
+                                    Image.asset('assets/delnet_logo.jpg',
+                                          fit: BoxFit.fill,),
+
                               ),
                             ),
                           ),
@@ -149,14 +153,14 @@ class LibraryDashbordScreen extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    CircularCategory("Subject_Title","MANAGEMENT"),
-                    CircularCategory("Subject_Title",'COMMUNICATION'),
-                    CircularCategory("Subject_Title",'MARKETING'),
-                    CircularCategory("Subject_Title",'ECONOMICS'),
-                    CircularCategory("Subject_Title",'ETHICS'),
-                    CircularCategory("Subject_Title",'FINANCE & ACCOUNTING'),
-                    CircularCategory("Subject_Title",'HRM & OB'),
-                    CircularCategory("Subject_Title",'OTHERS'),
+                    CircularCategory("MANAGEMENT","Subject_Title"),
+                    CircularCategory('COMMUNICATION',"Subject_Title"),
+                    CircularCategory('MARKETING',"Subject_Title"),
+                    CircularCategory('ECONOMICS',"Subject_Title"),
+                    CircularCategory('ETHICS',"Subject_Title"),
+                    CircularCategory('FINANCE & ACCOUNTING',"Subject_Title"),
+                    CircularCategory('HRM & OB',"Subject_Title",),
+                    CircularCategory('OTHERS',"Subject_Title"),
                   ],
                 ),
               ),

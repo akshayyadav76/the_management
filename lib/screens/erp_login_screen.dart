@@ -5,9 +5,11 @@ class ErpLoginScreen extends StatelessWidget {
   static const routName03='./erploginscreen';
   @override
   Widget build(BuildContext context) {
+    var myurl=ModalRoute.of(context).settings.arguments;
     return WebviewScaffold(
-      url: "http://erp.oistbpl.com/",
-     appBar: AppBar(title: Text("ERP"),centerTitle: true,),
+
+      url: myurl,
+    // appBar: AppBar(title: Text("ERP"),centerTitle: true,),
 
 //      withZoom: true,
 //      withOverviewMode: true,

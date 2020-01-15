@@ -20,14 +20,23 @@ class _BooksListScreenState extends State<BooksListScreen> {
 
 
     final Map mapValues = ModalRoute.of(context).settings.arguments;
-    final seriesBooksData = Provider.of<Students>(context, listen: false);
-    var getbooks =[];
+    final getbooks = Provider.of<Students>(context, listen: false).
+    series(mapValues['filerColumnName'], mapValues['searchName']);
+
+
+    print(getbooks.length);
 
     if(getbooks.length == 0){
       Provider.of<Students>(context,listen: false).getBooks().then((context){
-        setState(() {
-          getbooks= seriesBooksData.series(mapValues['filerColumnName'], mapValues['searchName']);
-        });
+        if(this.mounted){
+          setState(() {
+
+            print("sssss$getbooks");
+
+            print(getbooks.length);
+          });
+        }
+
       });
     }
 

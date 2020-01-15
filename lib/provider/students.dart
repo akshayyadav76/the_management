@@ -109,11 +109,11 @@ class Students with ChangeNotifier {
     _booksData=reposedData ;
     notifyListeners();
 
-    print(reposedData);
+//    print(reposedData);
   }
 
   List<dynamic>series(String filterColumnName,String searchName){
-    print("serite boooks lgnth now${_booksData[0]}");
+    //print("serite boooks lgnth now${_booksData[0]}");
     return _booksData.where((data){  //return not added here
       return data[filterColumnName]== searchName;
     }).toList();
