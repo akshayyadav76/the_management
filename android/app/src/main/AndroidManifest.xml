@@ -7,8 +7,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="the_management"
-        android:icon="@mipmap/ic_launcher"
+        android:label="The Management"
+        android:icon="@mipmap/ocmlogo"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"

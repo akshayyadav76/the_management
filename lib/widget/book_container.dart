@@ -3,21 +3,23 @@ import '../screens/books_list_screen.dart';
 
 class BookContainer extends StatelessWidget {
 
-  final String title;
+  final String searchName;
   final String qty;
   final String imagePath;
-  final String filterName;
+  final String filterColumnName;
 
 
-  BookContainer(this.title,this.qty,this.imagePath,this.filterName);
+  BookContainer(this.searchName,this.qty,this.imagePath,this.filterColumnName);
 
   @override
   Widget build(BuildContext context) {
      return InkWell(
        onTap:(){
          Navigator.of(context).pushNamed(BooksListScreen.routeName05,arguments: {
-           "title":title,
-           "filerName":filterName},);} ,
+           "filerColumnName":filterColumnName,
+           'searchName':searchName
+         }
+           ,);} ,
        child: Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(8.0),
@@ -36,9 +38,8 @@ class BookContainer extends StatelessWidget {
               SizedBox(height: 2.0),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
-                child: Text("$title Series",
+                child: Text("$searchName Series",
                     style: TextStyle(
-                      fontFamily: 'Quicksand',
                       fontSize: 15.0,
                       color: Colors.black,
                     )),
@@ -48,7 +49,6 @@ class BookContainer extends StatelessWidget {
                 padding: EdgeInsets.only(left: 15.0),
                 child: Text(qty,
                     style: TextStyle(
-                        fontFamily: 'Quicksand',
                         fontSize: 15.0,
                         color: Colors.red,
                         fontWeight: FontWeight.bold)),

@@ -26,7 +26,8 @@ class StudentTile extends StatelessWidget {
     print('build');
     return Card(
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
+        contentPadding: EdgeInsets.symmetric(
+            horizontal: 8.0),
         title: Text(student.studentName),
         leading: CircleAvatar(
           backgroundImage: AssetImage(student.photo),
@@ -42,7 +43,7 @@ class StudentTile extends StatelessWidget {
                       ? Icons.star
                       : Icons.star_border),
                   onTap: () {
-                    print(studentCons.rollNumberId);
+
                     studentCons.changeSurveillance();
                     DbHelper.insert("servilance", {
                       'rollno':student.rollNumberId,
@@ -109,7 +110,9 @@ class StudentTile extends StatelessWidget {
         ),
         subtitle: Row(
           children: <Widget>[
+
             Text('Section: ${student.section}'),
+            SizedBox(width: 20,),
             Text('Mentor: ${student.mentor}'),
           ],
         ),

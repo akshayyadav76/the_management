@@ -4,22 +4,39 @@ import 'package:provider/provider.dart';
 
 import '../provider/students.dart';
 
-class BooksListScreen extends StatelessWidget {
+class BooksListScreen extends StatefulWidget {
   static const routeName05 = '/bookslistscreen';
 
+
+  @override
+  _BooksListScreenState createState() => _BooksListScreenState();
+}
+
+class _BooksListScreenState extends State<BooksListScreen> {
+  bool check=true;
   @override
   Widget build(BuildContext context) {
+    print(check);
 
-    final Map seriesName = ModalRoute.of(context).settings.arguments;
 
-    final seriesBooksData = Provider.of<Students>(context, listen: false).series(
-            seriesName["title"],seriesName['filterName']
-        );
-    print("mb series data ${seriesBooksData.length}");
+    final Map mapValues = ModalRoute.of(context).settings.arguments;
+    final seriesBooksData = Provider.of<Students>(context, listen: false);
+    var getbooks =[];
+
+    if(getbooks.length == 0){
+      Provider.of<Students>(context,listen: false).getBooks().then((context){
+        setState(() {
+          getbooks= seriesBooksData.series(mapValues['filerColumnName'], mapValues['searchName']);
+        });
+      });
+    }
+
+
+   // print("mb series data ${seriesBooksData.}");
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("${seriesName["title"]} Series"),centerTitle: true,
+        title: Text("${mapValues["searchName"]} Series"),centerTitle: true,
          backgroundColor: Colors.yellow[600],
       ),
       body: Stack(
@@ -47,21 +64,21 @@ class BooksListScreen extends StatelessWidget {
                   color: Colors.yellow[400].withOpacity(0.5)),
             ),
           ),
-              GridView.builder(
-
+              getbooks.length ==0 ? Center(child: CircularProgressIndicator(),)
+                  :GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 5,
                   childAspectRatio: 2 / 2),
-              itemCount: seriesBooksData.length,
+              itemCount: getbooks.length,
               itemBuilder: (context, i) {
                 return Card(
                   elevation: 5,
                   child: GridTile(
                     header: Center(
 
-                        child: Text(seriesBooksData[i]["Title"],style: TextStyle(
+                        child: Text(getbooks[i]["Title"],style: TextStyle(
                         ),)
 
                     ),
@@ -75,8 +92,8 @@ class BooksListScreen extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 Text('Subject'),
-                                Text(seriesBooksData[i]["Subject_Title"]== null?"Not Available":
-                                seriesBooksData[i]["Subject_Title"]),
+                                Text(getbooks[i]["Subject_Title"]== null?"Not Available":
+                                getbooks[i]["Subject_Title"]),
 
                               ],
                             ),
@@ -88,7 +105,7 @@ class BooksListScreen extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 Text("builisher"),
-                                Text(seriesBooksData[i]["Publisher_Name"]),
+                                Text(getbooks[i]["Publisher_Name"]),
                               ],
                             ),
                           ),
@@ -105,8 +122,8 @@ class BooksListScreen extends StatelessWidget {
                               'assets/books_icon.png',
                               fit: BoxFit.contain,
                             )),
-                        Text(seriesBooksData[i]['AuthorName1']== null?"Not Available":
-                        seriesBooksData[i]['AuthorName1']),
+                        Text(getbooks[i]['AuthorName1']== null?"Not Available":
+                        getbooks[i]['AuthorName1']),
                       ],
                     ),
                   ),

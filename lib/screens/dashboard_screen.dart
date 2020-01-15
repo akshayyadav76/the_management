@@ -5,6 +5,8 @@ import '../widget/circular_image.dart';
 import '../widget/my_drawer.dart';
 import '../screens/students_list_screen.dart';
 import '../provider/students.dart';
+import '../screens/mentor_screen.dart';
+
 
 
 
@@ -27,20 +29,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
 
-    if(check){
-      Provider.of<Students>(context,listen: false).getBooks().then((context){
-        setState(() {
-          check =false;
-        });
-      });
-    }
-//   if(getStudent){
-//     Provider.of<Students>(context,listen: false).getData().then((context){
-//       setState(() {
-//         getStudent =false;
-//       });
-//     });
-//   }
 
     var height = MediaQuery.of(context).size.height;
 
@@ -101,22 +89,60 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        CircularImage(facultyName: "MR.Amit Khare",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Ms.Ansu Bhagya",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Mr.Ashish Mishra",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Chetan Chauhan",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "MR.Deepak Tiwari",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Dr.Mamta Manshani",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Poorva Sakergayen",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
-                        CircularImage(facultyName: "Mansi Jani",
-                          facultyImage: 'assets/faculty_images/demo.jpg',),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "MM");},
+                          child: CircularImage(facultyName: "Mamta Manshani",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "DT");},
+                          child: CircularImage(facultyName: "Deepak Tiwari",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "PS");},
+                          child: CircularImage(facultyName: "Poorva Sakergayen",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "AM");},
+                          child: CircularImage(facultyName: "Ashish Mishra",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "AKM");},
+                          child: CircularImage(facultyName: "Arun Kumar Mishra",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "AK");},
+                          child: CircularImage(facultyName: "Amit Khare",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "AB");},
+                          child: CircularImage(facultyName: "Ansu Bhagya",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "CC");},
+                          child: CircularImage(facultyName: "Chetan Chauhan",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.of(context).
+                          pushNamed(MentorScreen.routeName05,arguments: "MJ");},
+                          child: CircularImage(facultyName: "Mansi Jani",
+                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                        ),
                       ],
                     ),
                   ),
@@ -128,7 +154,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Consumer<Students>(
                   builder: (context,data,_){
                     data.recentsLIst();
-                    return data.recents ==0 ? Center(child: CircularProgressIndicator())
+                    return data.recents.length ==0 ?
+                    Center(child: Image(
+                        image: AssetImage("assets/waiting.png")))
                         :ListView.builder(
                       itemCount:  data.recents.length,
                         itemBuilder:(context,i){

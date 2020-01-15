@@ -24,7 +24,10 @@ class SurveillanceList extends StatelessWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("Surveillance List"),centerTitle: true,),
+      appBar: AppBar(title: Text("Surveillance List"),centerTitle: true,
+       backgroundColor: Colors.amberAccent,
+
+      ),
       body: list.length == 0? Center(child: CircularProgressIndicator())
           :ListView.builder(
           itemCount: list.length,

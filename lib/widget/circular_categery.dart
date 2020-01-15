@@ -13,7 +13,6 @@ class CircularCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-
     return GestureDetector(
       onTap: (){Navigator.of(context).pushNamed(BooksListScreen.routeName05,arguments: {
         'title':filerName,

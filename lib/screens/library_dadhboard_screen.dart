@@ -77,13 +77,11 @@ class LibraryDashbordScreen extends StatelessWidget {
                               Text('OCM',
                                   style: TextStyle(
                                       color: Colors.black,
-                                      fontFamily: 'Quicksand',
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.bold)),
                               Text('Library',
                                   style: TextStyle(
                                       color: Colors.black,
-                                      fontFamily: 'Quicksand',
                                       fontSize: 20.0))
                             ],
                           ),
@@ -142,9 +140,11 @@ class LibraryDashbordScreen extends StatelessWidget {
                 ],
               ),
               Container(
+                padding: EdgeInsets.only(top: 10),
                   alignment: Alignment.topLeft,
-                  child: Text("By Subjects",)),
+                  child: Text("By Subjects",style: TextStyle(fontSize: 30),)),
               Container(
+
                 height: 100,
                 child: ListView(
                   scrollDirection: Axis.horizontal,

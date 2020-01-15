@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import './screens/dashboard_screen.dart';
@@ -8,9 +9,14 @@ import './screens/surveillance_list.dart';
 import './screens/erp_login_screen.dart';
 import './screens/library_dadhboard_screen.dart';
 import './screens/books_list_screen.dart';
+import './screens/mentor_screen.dart';
 
 void main(){
-  runApp(TheManagement());
+  runApp(TheManagement()
+  );
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarColor: Colors.yellow[600].withOpacity(0.7))
+  );
 }
 
 class TheManagement extends StatelessWidget {
@@ -25,6 +31,8 @@ class TheManagement extends StatelessWidget {
           theme: ThemeData(
             primaryColor: Colors.white,
             accentColor: Colors.amberAccent,
+          //  primarySwatch: Colors.yellow[400],
+              appBarTheme: AppBarTheme(color: Colors.amberAccent),
 
             fontFamily: "OleoScript",
             iconTheme: IconThemeData(size: 28),
@@ -41,6 +49,7 @@ class TheManagement extends StatelessWidget {
             ErpLoginScreen.routName03:(context)=>ErpLoginScreen(),
             LibraryDashbordScreen.routeName04:(context)=>LibraryDashbordScreen(),
             BooksListScreen.routeName05:(context)=>BooksListScreen(),
+            MentorScreen.routeName05:(context)=>MentorScreen(),
           },
         ),
       );

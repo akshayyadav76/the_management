@@ -32,7 +32,8 @@ class CircularImage extends StatelessWidget {
 
             FittedBox(
               fit: BoxFit.fill,
-                child: Text(facultyName)),
+                child: Text(facultyName,),
+            ),
           ],
         ));
   }
