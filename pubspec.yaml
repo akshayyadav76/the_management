@@ -50,7 +50,7 @@ flutter:
   assets:
     - assets/ocm.jpg
     - assets/ocmlogo.png
-    - assets/faculty_images/demo.jpg
+    - assets/faculty_images/dr.jpg
     - assets/students_photos/
     - assets/books_icon.png
     - assets/series_icon/

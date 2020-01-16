@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:provider/provider.dart';
 
 
@@ -14,6 +15,7 @@ class BooksListScreen extends StatefulWidget {
 
 class _BooksListScreenState extends State<BooksListScreen> {
   bool check=true;
+  bool listChange=true;
   @override
   Widget build(BuildContext context) {
     print(check);
@@ -47,6 +49,12 @@ class _BooksListScreenState extends State<BooksListScreen> {
       appBar: AppBar(
         title: Text("${mapValues["searchName"]} Series"),centerTitle: true,
          backgroundColor: Colors.yellow[600],
+        actions: <Widget>[IconButton(icon: Icon(Icons.view_module),
+        onPressed: (){
+          setState(() {
+            listChange =!listChange;
+          });
+        },)],
       ),
       body: Stack(
         children: <Widget>[
@@ -74,6 +82,66 @@ class _BooksListScreenState extends State<BooksListScreen> {
             ),
           ),
               getbooks.length ==0 ? Center(child: CircularProgressIndicator(),)
+                  :listChange ?
+                  ListView.builder(
+                      itemCount:getbooks.length,
+                    itemBuilder: (context,i){
+                        return Card(
+                         child: Row(
+                           children: <Widget>[
+                             Container(
+                               decoration: BoxDecoration(border: Border.all(
+                                   width: 3,
+                                   color: Colors.yellow,)),
+                               height: 150,
+                               width: 150,
+                               child: Image.asset(
+                                 'assets/books_icon.png',
+                                 fit: BoxFit.contain,
+                               ),
+                             ),
+                             SizedBox(width: 4,),
+
+                             Container(height: 150,
+                             width: 150,
+                             child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                               
+                               children: <Widget>[
+                                  Text(getbooks[i]["Title"]),
+
+
+                                 Wrap(
+                                   children: <Widget>[
+                                   Text("Author: ",style: TextStyle(color: Colors.amber),),
+                                   Text(getbooks[i]['AuthorName1']== null?"N/A":
+                                   getbooks[i]['AuthorName1']),
+                                 ],),
+                                 FittedBox(
+                                   child: Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: <Widget>[
+                                     Wrap(children: <Widget>[
+
+                                       Text('Subject: ',style: TextStyle(color: Colors.amber),),
+                                       Text(getbooks[i]["Subject_Title"]== null?"N/A":
+                                       getbooks[i]["Subject_Title"]),
+                                     ],),
+
+                                     Wrap(children: <Widget>[
+                                       Text("Publisher: ",style: TextStyle(color: Colors.amber),),
+                                       Text(getbooks[i]["Publisher_Name"]),
+                                     ],),
+                                   ],),
+                                 ),
+                               ],
+                             ),
+                             ),
+                           ],
+                         )
+                        );
+                    },
+                  )
                   :GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -98,10 +166,10 @@ class _BooksListScreenState extends State<BooksListScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Expanded(
-                            child: Column(
+                            child: Wrap(
                               children: <Widget>[
                                 Text('Subject'),
-                                Text(getbooks[i]["Subject_Title"]== null?"Not Available":
+                                Text(getbooks[i]["Subject_Title"]== null?"N/A":
                                 getbooks[i]["Subject_Title"]),
 
                               ],
@@ -113,7 +181,7 @@ class _BooksListScreenState extends State<BooksListScreen> {
                           Expanded(
                             child: Column(
                               children: <Widget>[
-                                Text("builisher"),
+                                Text("Publisher"),
                                 Text(getbooks[i]["Publisher_Name"]),
                               ],
                             ),
@@ -131,7 +199,7 @@ class _BooksListScreenState extends State<BooksListScreen> {
                               'assets/books_icon.png',
                               fit: BoxFit.contain,
                             )),
-                        Text(getbooks[i]['AuthorName1']== null?"Not Available":
+                        Text(getbooks[i]['AuthorName1']== null?"N/A":
                         getbooks[i]['AuthorName1']),
                       ],
                     ),

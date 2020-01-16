@@ -83,7 +83,7 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
             Center(
                 child: CircularImage(
                   facultyName: "Dr.PK Chopra",
-                  facultyImage: 'assets/faculty_images/demo.jpg',),
+                  facultyImage: 'assets/faculty_images/dr.jpg',),
 
             ),
             SizedBox(height: 8,),

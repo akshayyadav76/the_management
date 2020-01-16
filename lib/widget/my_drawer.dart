@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/surveillance_list.dart';
 import '../screens/erp_login_screen.dart';
@@ -7,6 +8,16 @@ import '../screens/library_dadhboard_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   final styel =TextStyle(color: Colors.white);
+
+  Future _lunch(var numberEmail) async {
+    final url = numberEmail;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'error';
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,8 +44,10 @@ class MyDrawer extends StatelessWidget {
           ListTile(title: Text("Library"),onTap: (){
             Navigator.of(context).pushNamed(LibraryDashbordScreen.routeName04);
           },),
-          ListTile(title: Text("image of college number"),),
-
+          ListTile(title: Text("OCM FB Page"),
+          onTap: (){
+            _lunch('https://www.facebook.com/Oriental-College-Of-Management-Bhopal-542242805891631/');
+          },),
         ],
       ),
     );

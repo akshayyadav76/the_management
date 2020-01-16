@@ -74,7 +74,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           },
                         child: CircularImage(
                               facultyName: "Dr.PK Chopra",
-                              facultyImage: 'assets/faculty_images/demo.jpg',),
+                              facultyImage: 'assets/faculty_images/dr.jpg',),
 
                         ),
                       ),
@@ -93,55 +93,55 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "MM");},
                           child: CircularImage(facultyName: "Mamta Manshani",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_girl.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "DT");},
                           child: CircularImage(facultyName: "Deepak Tiwari",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "PS");},
                           child: CircularImage(facultyName: "Poorva Sakergayen",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_girl.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "AM");},
                           child: CircularImage(facultyName: "Ashish Mishra",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "AKM");},
                           child: CircularImage(facultyName: "Arun Kumar Mishra",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "AK");},
                           child: CircularImage(facultyName: "Amit Khare",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "AB");},
                           child: CircularImage(facultyName: "Ansu Bhagya",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "CC");},
                           child: CircularImage(facultyName: "Chetan Chauhan",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_boy.jpg',),
                         ),
                         GestureDetector(
                           onTap: (){Navigator.of(context).
                           pushNamed(MentorScreen.routeName05,arguments: "MJ");},
                           child: CircularImage(facultyName: "Mansi Jani",
-                            facultyImage: 'assets/faculty_images/demo.jpg',),
+                            facultyImage: 'assets/students_photos/no_photo_girl.jpg',),
                         ),
                       ],
                     ),
