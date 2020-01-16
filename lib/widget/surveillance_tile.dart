@@ -3,17 +3,16 @@ import 'package:provider/provider.dart';
 
 import '../provider/student.dart';
 
-
 class SurveillanceTile extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-    final sruvilance=Provider.of<Student>(context);
+    final sruvilance = Provider.of<Student>(context);
 
     return ListTile(
       title: Text(sruvilance.studentName),
-      leading: CircleAvatar(backgroundImage: AssetImage(sruvilance.photo),),
+      leading: CircleAvatar(
+        backgroundImage: AssetImage(sruvilance.photo),
+      ),
       subtitle: Row(
         children: <Widget>[
           Text('Section: ${sruvilance.section}'),
