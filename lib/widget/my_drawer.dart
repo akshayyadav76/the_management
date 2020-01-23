@@ -6,6 +6,7 @@ import '../screens/erp_login_screen.dart';
 import '../screens/library_dadhboard_screen.dart';
 
 
+
 class MyDrawer extends StatelessWidget {
   final styel =TextStyle(color: Colors.white);
 
@@ -40,6 +41,10 @@ class MyDrawer extends StatelessWidget {
           },),
           ListTile(title: Text("Servilas LIst"),onTap: (){
             Navigator.of(context).pushNamed(SurveillanceList.routeName);
+          },),
+          ListTile(title: Text("Office"),onTap: (){
+            Navigator.of(context).pushNamed("/dfff");
+          
           },),
           ListTile(title: Text("Library"),onTap: (){
             Navigator.of(context).pushNamed(LibraryDashbordScreen.routeName04);

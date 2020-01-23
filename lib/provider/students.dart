@@ -147,5 +147,13 @@ class Students with ChangeNotifier {
   }
 
 
+  // ------------------Post for attendence
+
+  Future<void>PostAttandance(String sendjson)async{
+   var url ="https//google.ocm";
+   http.post(url,body: json.encode(sendjson));
+  }
+
+
 
 }

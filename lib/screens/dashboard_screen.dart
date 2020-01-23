@@ -90,8 +90,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         GestureDetector(
-                          onTap: (){Navigator.of(context).
-                          pushNamed(MentorScreen.routeName05,arguments: "MM");},
+                          onTap: (){
+                            Navigator.of(context).
+                         pushNamed(MentorScreen.routeName05,arguments: "MM");
+                         },
                           child: CircularImage(facultyName: "Mamta Manshani",
                             facultyImage: 'assets/students_photos/no_photo_girl.jpg',),
                         ),

@@ -112,7 +112,7 @@ class StudentTile extends StatelessWidget {
           children: <Widget>[
 
             Text('Section: ${student.section}'),
-            SizedBox(width: 20,),
+            SizedBox(width: 15,),
             Text('Mentor: ${student.mentor}'),
           ],
         ),

@@ -43,6 +43,8 @@ bool isLoding = true;
       body: SafeArea(
         child: Column(
           children: <Widget>[
+
+            
             CircularImage(
               facultyName: mentorName,
               facultyImage: 'assets/faculty_images/demo.jpg',),

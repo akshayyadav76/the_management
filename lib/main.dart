@@ -10,6 +10,8 @@ import './screens/erp_login_screen.dart';
 import './screens/library_dadhboard_screen.dart';
 import './screens/books_list_screen.dart';
 import './screens/mentor_screen.dart';
+import './screens/office_screen.dart';
+import 'screens/under_constraction_screen.dart';
 
 void main(){
   runApp(TheManagement()
@@ -50,7 +52,12 @@ class TheManagement extends StatelessWidget {
             LibraryDashbordScreen.routeName04:(context)=>LibraryDashbordScreen(),
             BooksListScreen.routeName05:(context)=>BooksListScreen(),
             MentorScreen.routeName05:(context)=>MentorScreen(),
+            OfficeScreen.route:(context)=>OfficeScreen(),
           },
+          onGenerateRoute: (RouteSettings setting){
+            print("sss");
+            return MaterialPageRoute(builder: (context)=>UnderConstraction());
+            },
         ),
       );
   }
