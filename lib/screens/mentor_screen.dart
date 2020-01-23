@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../widget/circular_image.dart';
 import '../provider/students.dart';
 import 'package:provider/provider.dart';
 import '../widget/student_tile.dart';
-// this is mentor screen
-
-
+import '../screens/mentorscreens/attandance_screen.dart';
 
 
 
@@ -45,16 +42,32 @@ bool isLoding = true;
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Column(
+      appBar: AppBar(title:  Text("attandeance"),),
+
+      body: Column(
           children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              height: 100,
+              child: Column(children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                GestureDetector(
+                  child:
+                  boxConatainer( 'attendance', 20.0 ),
+                  onTap: (){
+                    Navigator.of(context).pushNamed(AttandenceScreen.attandanceRoutName);
+                
+                  },
 
-            
-            CircularImage(
-              facultyName: mentorName,
-              facultyImage: 'assets/faculty_images/demo.jpg',),
-
-                Center(child: Text('batch 19-21')),
+                ),
+               
+                   boxConatainer( 'Review Attendane', 18.3),
+                ],),
+              ],),
+            ),
+          
             Expanded(
               child: menterList.length ==0 ? Center(child: CircularProgressIndicator(),)
                   : ListView.builder(
@@ -69,7 +82,37 @@ bool isLoding = true;
 
           ],
         ),
-      ),
-    );;
+      
+    );
+  }
+
+   Widget boxConatainer(String attendance, double size) {
+     return InkWell(
+       
+       child: Material(
+         color: Colors.yellow[400],
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(8.0),
+        child: Container( 
+          height: 50.0,
+          width: (MediaQuery.of(context).size.width / 2.0) - 20.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Text(attendance,
+                textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: size,
+                      color: Colors.black,
+                    )),
+              ),
+            
+            ],
+          ),
+        ),
+    ),
+     );
   }
 }

@@ -12,6 +12,7 @@ import './screens/books_list_screen.dart';
 import './screens/mentor_screen.dart';
 import './screens/office_screen.dart';
 import 'screens/under_constraction_screen.dart';
+import 'screens/mentorscreens/attandance_screen.dart';
 
 void main(){
   runApp(TheManagement()
@@ -53,6 +54,7 @@ class TheManagement extends StatelessWidget {
             BooksListScreen.routeName05:(context)=>BooksListScreen(),
             MentorScreen.routeName05:(context)=>MentorScreen(),
             OfficeScreen.route:(context)=>OfficeScreen(),
+            AttandenceScreen.attandanceRoutName :(context)=>AttandenceScreen(),
           },
           onGenerateRoute: (RouteSettings setting){
             print("sss");
